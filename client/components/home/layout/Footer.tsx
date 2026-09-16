@@ -7,7 +7,7 @@ export default function Footer() {
 
                 <h2 className="text-2xl font-bold text-red-600">
 
-                    All india Call Girls Delhi NCR
+                    Call Girls Delhi NCR
 
                 </h2>
 

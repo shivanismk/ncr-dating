@@ -11,7 +11,7 @@ export default function AboutPage() {
           <h1 className="text-5xl font-bold">About Us</h1>
 
           <p className="mt-6 text-lg text-black font-bold">
-            Learn more about our All India CGs(Call Girls) platform and how we help users
+            Learn more about our ConnectNCR(Call Girls) platform and how we help users
             discover trusted Profile  across India.
           </p>
         </div>
@@ -23,7 +23,7 @@ export default function AboutPage() {
 
           <h2 className="text-3xl font-bold">
 
-            Welcome to All India CGs
+            Welcome to ConnectNCR
           </h2>
 
           <p className="mt-6 leading-8 text-gray-600">

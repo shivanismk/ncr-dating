@@ -171,7 +171,8 @@ export default function SearchBar() {
         <button
           type="submit"
           disabled={searching}
-          className="flex items-center justify-center gap-2 rounded-xl bg-red-600 p-3 font-semibold text-white transition hover:bg-red-700"
+          // className="flex items-center justify-center gap-2 rounded-xl bg-red-600 p-3 font-semibold text-white transition hover:bg-red-700"
+        className="flex items-center justify-center gap-2 rounded-xl bg-red-600 p-3 font-semibold text-white transition hover:bg-red-700 mb-3"
         >
           <Search size={18} />
           {searching ? "Searching..." : "Search"}

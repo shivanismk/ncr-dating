@@ -1,6 +1,8 @@
 import { Category } from "@/types/category";
 
-const API = "http://localhost:5000/api/categories";
+// const API = "http://localhost:5000/api/categories";
+
+const API = `${process.env.NEXT_PUBLIC_API_URL}/api/categories`;
 
 export async function createCategory(
   category: Category

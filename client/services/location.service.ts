@@ -1,4 +1,6 @@
-const API = "http://localhost:5000/api/locations";
+// const API = "http://localhost:5000/api/locations";
+
+ const API = `${process.env.NEXT_PUBLIC_API_URL}/api/locations`;
 
 export async function getStates() {
   const res = await fetch(`${API}/states`);

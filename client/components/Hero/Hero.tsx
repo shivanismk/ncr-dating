@@ -32,7 +32,6 @@ export default function Hero() {
 
           <p className="mt-6 text-lg text-gray-200">
             Connect with genuine call girls and high-class profiles Delhi NCR. 100% discreet, fast, and 24/7 active.
-            We can make you a promise that here in our organization you will be able to find such housewife escorts easily that you are looking for.
           
           </p>
 

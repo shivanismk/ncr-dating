@@ -14,8 +14,9 @@ export default function StatesPage() {
   async function saveState(e: React.FormEvent) {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/api/states", {
-      method: "POST",
+    // const res = await fetch("http://localhost:5000/api/states", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/states`, { 
+    method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
