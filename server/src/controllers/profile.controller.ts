@@ -165,6 +165,28 @@ export const dashboardStats = async (
 };
 
 
+// export const getById = async (req: Request, res: Response) => {
+//   try {
+//     const id = Number(req.params.id);
+
+//     const profile = await service.getProfileById(id);
+
+//     if (!profile) {
+//       return res.status(404).json({
+//         message: "Profile not found",
+//       });
+//     }
+
+//     res.json(profile);
+//   } catch (error) {
+//     console.error(error);
+
+//     res.status(500).json({
+//       message: "Failed to fetch profile",
+//     });
+//   }
+// };
+
 export const getById = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
@@ -177,15 +199,41 @@ export const getById = async (req: Request, res: Response) => {
       });
     }
 
-    res.json(profile);
+    const safeProfile = {
+      ...profile,
+      state: profile.state !== null ? Number(profile.state) : null,
+      city: profile.city !== null ? Number(profile.city) : null,
+      category:
+        profile.category !== null ? Number(profile.category) : null,
+    };
+
+    res.json(safeProfile);
   } catch (error) {
-    console.error(error);
+    console.error("GET PROFILE BY ID ERROR:", error);
 
     res.status(500).json({
       message: "Failed to fetch profile",
     });
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const popularLocations = async (_: Request, res: Response) => {
   try {
