@@ -126,7 +126,7 @@ export async function getStates() {
     ORDER BY state_id ASC
   `;
 
-  return rows.map((row) => ({
+  return rows.map((row: { state_id: any; state_name: any; state_code: any; }) => ({
     state_id: Number(row.state_id),
     state_name: row.state_name,
     state_code: row.state_code,
@@ -156,7 +156,7 @@ export async function getCities(stateId: string) {
       ORDER BY c.city_id ASC
     `;
 
-    return rows.map((row) => ({
+    return rows.map((row:any) => ({
       city_id: Number(row.city_id),
       city_name: row.city_name,
       state_name: row.state_name,
