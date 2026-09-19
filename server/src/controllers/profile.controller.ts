@@ -40,13 +40,20 @@ export const list = async (_: Request, res: Response) => {
   try {
     const profiles = await service.getProfiles();
 
-    const safeProfiles = profiles.map((profile) => ({
-      ...profile,
-      state: profile.state !== null ? Number(profile.state) : null,
-      city: profile.city !== null ? Number(profile.city) : null,
-      category:
-        profile.category !== null ? Number(profile.category) : null,
-    }));
+    const safeProfiles = profiles.map(
+      (profile: {
+        state: bigint | null;
+        city: bigint | null;
+        category: bigint | null;
+        [key: string]: any;
+      }) => ({
+        ...profile,
+        state: profile.state !== null ? Number(profile.state) : null,
+        city: profile.city !== null ? Number(profile.city) : null,
+        category:
+          profile.category !== null ? Number(profile.category) : null,
+      })
+    );
 
     res.json(safeProfiles);
   } catch (error) {

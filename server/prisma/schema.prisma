@@ -14,7 +14,10 @@ model User {
   password  String
   role      String   @default("admin")
   createdAt DateTime @default(now())
+
+  @@map("user")
 }
+
 
 model Category {
   id        Int      @id @default(autoincrement())
@@ -22,48 +25,37 @@ model Category {
   slug      String   @unique
   status    Boolean  @default(true)
   createdAt DateTime @default(now())
+
+  @@map("category")
 }
 
 model Profile {
   id Int @id @default(autoincrement())
 
   name String
-
   state BigInt?
-
   city BigInt?
-
   category BigInt?
-
   phone String
-
   whatsapp String
-
   email String?
-
   address String?
-
   description String?
-
   image String?
-
   additionalDetails Json?
-
   status Boolean @default(true)
-
   createdAt DateTime @default(now())
+
+  @@map("profile")
 }
-
-
-
-
-
 
 model Gallery {
   id        Int      @id @default(autoincrement())
   title     String
   image     String
   createdAt DateTime @default(now())
+
+  @@map("gallery")
 }
 
 
