@@ -419,7 +419,7 @@ export const searchProfiles = async (
   ]);
 
   // Convert BigInt values before sending JSON response
-  const safeProfiles = profiles.map((profile: { state: null; city: null; category: null; }) => ({
+  const safeProfiles = profiles.map((profile:any) => ({
     ...profile,
     state: profile.state !== null ? Number(profile.state) : null,
     city: profile.city !== null ? Number(profile.city) : null,
@@ -459,7 +459,7 @@ export const getStates = async () => {
     ORDER BY state_id ASC
   `;
 
-  return states.map((state: { state_id: any; state_name: any; state_code: any; }) => ({
+  return states.map((state:any) => ({
     state_id: Number(state.state_id),
     state_name: state.state_name,
     state_code: state.state_code,
@@ -514,7 +514,7 @@ export const getCities = async (stateId: string) => {
       ORDER BY c.city_id ASC
     `;
 
-    return rows.map((row: { city_id: any; city_name: any; state_name: any; state_code: any; }) => ({
+    return rows.map((row:any) => ({
       city_id: Number(row.city_id),
       city_name: row.city_name,
       state_name: row.state_name,

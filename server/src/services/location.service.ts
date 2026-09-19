@@ -126,7 +126,7 @@ export async function getStates() {
     ORDER BY state_id ASC
   `;
 
-  return rows.map((row: { state_id: any; state_name: any; state_code: any; }) => ({
+  return rows.map((row:any) => ({
     state_id: Number(row.state_id),
     state_name: row.state_name,
     state_code: row.state_code,
