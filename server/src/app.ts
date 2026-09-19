@@ -29,6 +29,8 @@ app.use(
   "http://localhost:3001",
   "https://connectncr.in",
   "https://www.connectncr.in",
+  "https://ncr-dating.vercel.app",
+
 ],
 credentials: true,
   })
