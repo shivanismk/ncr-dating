@@ -1357,10 +1357,10 @@ function ProfilesContent() {
                 <div className="flex flex-1 flex-col justify-between p-5 md:p-6">
 
                   <div>
-
+{/* 
                     <span className="inline-block rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-600">
                       {profileCategoryName}
-                    </span>
+                    </span> */}
 
                     <h2 className="mt-5 text-2xl font-bold text-gray-900 md:text-3xl">
                       {profile.name}
@@ -1370,7 +1370,7 @@ function ProfilesContent() {
                       📍 {profileCityName}, {profileStateName}
                     </p>
 
-                    {profile.description && (
+                    {/* {profile.description && (
                       <div className="mt-5 rounded-xl bg-gray-50 p-4">
 
                         <p className="leading-7 text-gray-600 line-clamp-3">
@@ -1378,7 +1378,24 @@ function ProfilesContent() {
                         </p>
 
                       </div>
-                    )}
+                    )} */}
+
+
+{profile.description && (
+  <div className="mt-5 min-h-[90px] max-h-[90px] overflow-hidden rounded-xl bg-gray-50 p-4">
+    <p className="line-clamp-3 leading-7 text-gray-600">
+      {profile.description}
+    </p>
+  </div>
+)}
+
+
+
+
+
+
+
+
 
                   </div>
 
