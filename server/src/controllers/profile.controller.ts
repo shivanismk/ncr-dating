@@ -3,21 +3,62 @@ import * as service from "../services/profile.service";
 
 export const create = async (req: Request, res: Response) => {
   try {
+
+        // console.log("CREATE PROFILE BODY:", req.body);
+
+
     const profile = await service.createProfile(req.body);
 
-    res.status(201).json(profile);
+ const safeProfile = {
+      ...profile,
+      state: profile.state !== null ? Number(profile.state) : null,
+      city: profile.city !== null ? Number(profile.city) : null,
+      category: profile.category !== null ? Number(profile.category) : null,
+    };
+
+
+
+    res.status(201).json(safeProfile);
   } catch (err) {
+
+        // console.error("CREATE PROFILE ERROR:", err);
+
+
     res.status(500).json({
       message: "Failed to create profile",
     });
   }
 };
 
-export const list = async (_: Request, res: Response) => {
-  const profiles = await service.getProfiles();
+// export const list = async (_: Request, res: Response) => {
+//   const profiles = await service.getProfiles();
 
-  res.json(profiles);
+//   res.json(profiles);
+// };
+
+export const list = async (_: Request, res: Response) => {
+  try {
+    const profiles = await service.getProfiles();
+
+    const safeProfiles = profiles.map((profile) => ({
+      ...profile,
+      state: profile.state !== null ? Number(profile.state) : null,
+      city: profile.city !== null ? Number(profile.city) : null,
+      category:
+        profile.category !== null ? Number(profile.category) : null,
+    }));
+
+    res.json(safeProfiles);
+  } catch (error) {
+    console.error("GET PROFILES ERROR:", error);
+
+    res.status(500).json({
+      message: "Failed to load profiles",
+    });
+  }
 };
+
+
 
 export const search = async (req: Request, res: Response) => {
   try {
@@ -42,6 +83,7 @@ export const search = async (req: Request, res: Response) => {
 };
 
 
+
 export const states = async (_: Request, res: Response) => {
   try {
     const data = await service.getStates();
@@ -54,7 +96,7 @@ export const states = async (_: Request, res: Response) => {
   }
 };
 
-// new function add
+// new function add 
 
 export const categories = async (_: Request, res: Response) => {
   const categories = await service.getCategories();
@@ -151,3 +193,8 @@ export const popularLocations = async (_: Request, res: Response) => {
     });
   }
 };
+
+
+
+
+

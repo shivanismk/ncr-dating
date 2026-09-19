@@ -5,3 +5,4 @@ export function generateToken(payload: object) {
     expiresIn: "7d",
   });
 }
+

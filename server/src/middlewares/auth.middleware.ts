@@ -70,6 +70,16 @@ export function verifyToken(
   next: NextFunction
 ) {
   try {
+     
+//     console.log("AUTH DEBUG:", {
+//   hasCookieToken: !!req.cookies?.adminToken,
+//   hasAuthHeader: !!req.headers.authorization,
+// });
+
+
+
+
+
     // 1. First try HttpOnly cookie
     let token = req.cookies?.adminToken;
 

@@ -8,8 +8,9 @@ export const createCategory = async (data: any) => {
 
 export const getCategories = async () => {
   return prisma.category.findMany({
-    where: {
-      status: true,
+    select: {
+      id: true,
+      name: true,
     },
     orderBy: {
       name: "asc",

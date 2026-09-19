@@ -29,11 +29,11 @@ model Profile {
 
   name String
 
-  state String
+  state BigInt?
 
-  city String
+  city BigInt?
 
-  category String
+  category BigInt?
 
   phone String
 
@@ -64,4 +64,28 @@ model Gallery {
   title     String
   image     String
   createdAt DateTime @default(now())
+}
+
+
+model State {
+  state_id   BigInt   @id @default(autoincrement())
+  state_code String   @unique
+  state_name String
+  is_active  Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  @@map("state")
+}
+
+model City {
+  city_id    BigInt   @id @default(autoincrement())
+  city_name  String
+  city_code  BigInt?  @unique
+  state_id   BigInt
+  is_active  Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  @@map("city")
 }

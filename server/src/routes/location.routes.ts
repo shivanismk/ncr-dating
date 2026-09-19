@@ -7,4 +7,4 @@ router.get("/states", controller.states);
 
 router.get("/cities", controller.cities);
 
-export default router;
+export default router; 

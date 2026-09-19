@@ -1,6 +1,9 @@
+import dotenv from "dotenv";
+
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
@@ -9,11 +12,10 @@ import locationRoutes from "./routes/location.routes";
 import profileRoutes from "./routes/profile.routes";
 import authRoutes from "./routes/auth.routes";
 import categoryRoutes from "./routes/category.routes";
+import cityRoutes from "./routes/city.routes";
 import dashboardRoutes from "./routes/dashboard.routes";
 
 // import cookieParser from "cookie-parser";
-
-dotenv.config();
 
 const app = express();
 
@@ -51,6 +53,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/profiles", profileRoutes);
 app.use("/api/locations", locationRoutes);
 app.use("/api/categories", categoryRoutes);
+app.use("/api/cities", cityRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/uploads", uploadRoutes);
 

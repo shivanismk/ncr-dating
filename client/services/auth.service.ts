@@ -181,9 +181,54 @@
 
 
 
-const API = "https://api.connectncr.in/api/auth";
+// const API = "https://api.connectncr.in/api/auth";
 
-export async function login(email: string, password: string) {
+// export async function login(email: string, password: string) {
+//   const res = await fetch(`${API}/login`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     credentials: "include",
+//     body: JSON.stringify({
+//       email,
+//       password,
+//     }),
+//   });
+
+//   const response = await res.json();
+
+//   if (!res.ok || !response.success) {
+//     throw new Error(response.message || "Login failed");
+//   }
+
+//   return response.data;
+// }
+
+// export async function logout() {
+//   const res = await fetch(`${API}/logout`, {
+//     method: "POST",
+//     credentials: "include",
+//   });
+
+//   const response = await res.json();
+
+//   if (!res.ok) {
+//     throw new Error(response.message || "Logout failed");
+//   }
+
+//   return response;
+// }
+
+
+// ---------------------------------
+
+const API = `${process.env.NEXT_PUBLIC_API_URL}/api/auth`;
+
+export async function login(
+  email: string,
+  password: string
+) {
   const res = await fetch(`${API}/login`, {
     method: "POST",
     headers: {
@@ -199,7 +244,9 @@ export async function login(email: string, password: string) {
   const response = await res.json();
 
   if (!res.ok || !response.success) {
-    throw new Error(response.message || "Login failed");
+    throw new Error(
+      response.message || "Login failed"
+    );
   }
 
   return response.data;
@@ -214,8 +261,11 @@ export async function logout() {
   const response = await res.json();
 
   if (!res.ok) {
-    throw new Error(response.message || "Logout failed");
+    throw new Error(
+      response.message || "Logout failed"
+    );
   }
 
   return response;
 }
+
