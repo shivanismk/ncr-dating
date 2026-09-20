@@ -1171,24 +1171,73 @@ function ProfilesContent() {
   // LOAD CITY DATA
   // =====================================================
 
-  useEffect(() => {
-    async function loadCityData() {
-      if (!state) {
+  // useEffect(() => {
+  //   async function loadCityData() {
+  //     if (!state) {
+  //       setCities([]);
+  //       return;
+  //     }
+
+  //     try {
+  //       const cityData = await getCities(state);
+  //       setCities(cityData);
+  //     } catch (error) {
+  //       console.error("Failed to load city data:", error);
+  //       setCities([]);
+  //     }
+  //   }
+
+  //   loadCityData();
+  // }, [state]);
+
+
+useEffect(() => {
+  async function loadCityData() {
+    try {
+      // If a state is selected in URL, load its cities
+      if (state) {
+        const cityData = await getCities(state);
+        setCities(cityData);
+        return;
+      }
+
+      // If no state is selected, load cities for all states
+      // used by the current profiles
+      if (profiles.length === 0) {
         setCities([]);
         return;
       }
 
-      try {
-        const cityData = await getCities(state);
-        setCities(cityData);
-      } catch (error) {
-        console.error("Failed to load city data:", error);
-        setCities([]);
-      }
-    }
+      const stateIds = profiles
+        .map((profile) => String(profile.state))
+        .filter((stateId) => stateId !== "");
 
-    loadCityData();
-  }, [state]);
+      const uniqueStateIds: string[] = Array.from(
+        new Set<string>(stateIds)
+      );
+
+      const cityResults = await Promise.all(
+        uniqueStateIds.map((stateId) => getCities(stateId))
+      );
+
+      setCities(cityResults.flat());
+    } catch (error) {
+      console.error("Failed to load city data:", error);
+      setCities([]);
+    }
+  }
+
+  loadCityData();
+}, [state, profiles]);
+
+
+
+
+
+
+
+
+
 
   // =====================================================
   // GET DISPLAY NAMES
@@ -1388,6 +1437,7 @@ function ProfilesContent() {
     </p>
   </div>
 )}
+
 
 
 
